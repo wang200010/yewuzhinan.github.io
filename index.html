@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>淄博移动营业厅业务办理指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .header-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #0078d7, #00a0e9);
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .logo {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .icons {
+            position: absolute;
+            left: 80px;
+            top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .icon {
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .panda {
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+            width: 90px;
+            height: 110px;
+            background-color: white;
+            border-radius: 50% 50% 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        .title {
+            position: absolute;
+            right: 15px;
+            top: 30%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .btn-city {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            background-color: #ffd700;
+            color: #333;
+            padding: 6px 16px;
+            border-radius: 18px;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .rules {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .rule-item {
+            margin-bottom: 10px;
+        }
+        
+        .select-group {
+            margin-bottom: 20px;
+        }
+        
+        .select-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .select-container {
+            position: relative;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            appearance: none;
+            background-color: #fff;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .select-arrow {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #999;
+        }
+        
+        .report-link {
+            text-align: right;
+            margin-top: 15px;
+        }
+        
+        .report-link a {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-image">
+        <div class="logo">5G+</div>
+        <div class="icons">
+            <div class="icon">✈</div>
+            <div class="icon">💬</div>
+            <div class="icon">📱</div>
+        </div>
+        <div class="panda">🐼</div>
+        <div class="title">营业厅业务办理指南</div>
+        <button class="btn-city">淄博移动</button>
+    </div>
+    
+    <div class="container">
+        <h1>营业厅业务办理指南</h1>
+        
+        <div class="rules">
+            <div class="rule-item">1、本人办理业务，须持本人有效身份证件原件</div>
+            <div class="rule-item">2、若为委托办理，经办人须持经办人和委托人（机主）有效身份证件原件及委托人（机主）授权委托书</div>
+        </div>
+        
+        <div class="select-group">
+            <label class="select-label">办理业务所需证件查询</label>
+            <div class="select-container">
+                <select id="customerType">
+                    <option disabled selected>请选择</option>
+                    <option value="personal">个人客户</option>
+                    <option value="company">单位客户</option>
+                </select>
+                <span class="select-arrow">▼</span>
+            </div>
+        </div>
+        
+        <div id="personalInfo" class="rules" style="display: none;">
+            <div class="rule-item">1、二代居民身份证、户口簿（含临时居民身份证、居住证、集体户籍证明、由派出所出具的户籍证明/常住人口身份证明需加盖所属区（县）公安分局公章。不含已停止使用的一代居民身份证），适用于国内居民。</div>
+            <div class="rule-item">2、军人身份证，适用于中国人民解放军军人、中国人民武装警察办理个人或社会活动适用。</div>
+            <div class="rule-item">3、港澳居民往来内地通行证（简称港澳通行证）和港澳居民居住证，适用于港澳居民。</div>
+            <div class="rule-item">4、台湾居民来往大陆通行证（简称台胞证）和台湾居民居住证，适用于台湾居民。</div>
+            <div class="rule-item">5、外国公民护照和外国人永久居留身份证，适用于外国公民。</div>
+            <div class="rule-item">6、华侨护照，适用于居住国外的华侨。</div>
+            <div class="rule-item">注意事项：</div>
+            <div class="rule-item">1、已过有效期的身份证件为无效身份证件，不能办理业务；</div>
+            <div class="rule-item">2、身份证消磁不能直接办理业务，除了提供消磁身份证，同时提供国内居民其他有效证件之一至自建自营厅办理。</div>
+            <div class="rule-item">3、外籍客户资料留存时需留存护照页及中国驻该国大使馆或领事馆的有效签证页。</div>
+        </div>
+        
+        <div id="companyInfo" class="rules" style="display: none;">
+            <div class="rule-item">1、组织机构代码证</div>
+            <div class="rule-item">2、营业执照</div>
+            <div class="rule-item">3、三证合一社会机构代码证</div>
+            <div class="rule-item">注意事项：</div>
+            <div class="rule-item">1、已过有效期的身份证件为无效身份证件，不能办理业务；</div>
+            <div class="rule-item">2、身份证消磁不能直接办理业务，除了提供消磁身份证，同时提供国内居民其他有效证件之一至自建自营厅办理。</div>
+            <div class="rule-item">3、外籍客户资料留存时需留存护照页及中国驻该国大使馆或领事馆的有效签证页。</div>
+        </div>
+        
+        <div class="select-group">
+            <label class="select-label">常见业务办理查询</label>
+            <div class="select-container">
+                <select id="businessType">
+                    <option disabled selected>请选择</option>
+                    <option value="transfer">过户</option>
+                    <option value="cancel">手机号码销号</option>
+                    <option value="replace">手机补/换卡</option>
+                    <option value="suspend">手机停机保号</option>
+                    <option value="resume">手机停机保号恢复</option>
+                    <option value="lost">手机挂失</option>
+                    <option value="change">资费变更</option>
+                    <option value="invoice">发票/账单/详单打印</option>
+                    <option value="move">家庭宽带移机</option>
+                    <option value="unsubscribe">家庭宽带退订</option>
+                    <option value="replaceDevice">家庭宽带更换设备</option>
+                    <option value="smart">家庭宽带智能组网</option>
+                    <option value="childLock">机顶盒童锁设置</option>
+                    <option value="crossCancel">跨省销号</option>
+                </select>
+                <span class="select-arrow">▼</span>
+            </div>
+        </div>
+        
+        <div id="businessInfo" class="rules" style="display: none;">
+            <!-- 各业务提示内容将通过JavaScript动态填充 -->
+        </div>
+        
+        <div class="report-link">
+            <a href="#">举报</a>
+        </div>
+    </div>
+
+    <script>
+        // 业务信息数据
+        const businessInfoData = {
+            transfer: {
+                title: "过户",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：新、老双方机主本人持身份证原件</div>
+                    <div class="rule-item">单位办理手续（单过名称过户到个人）：老机主持本人身份证原件+单位有效证件+单位委托书+及新机主本人持身份证原件</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、16周岁以下：监护人持本人身份证+机主证件+户口簿。</div>
+                    <div class="rule-item">2、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            cancel: {
+                title: "手机号码销号",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1.销号前需结清当前欠费，并解除手机号绑定的第三方业务关系。</div>
+                    <div class="rule-item">2.具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            replace: {
+                title: "手机补/换卡",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：128k LTE-USIM卡10元，超级SIM卡35元</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件+服务密码或通话记录；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书+服务密码或通话记录</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书+服务密码或通话记录</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、省内跨地市补/换卡、跨省补/换卡、非身份证补/换卡及单位名称补/换卡均在自建自营厅办理。</div>
+                    <div class="rule-item">2、省内跨地市补/换卡、跨省补/换卡仅能本人办理，特殊资费仅限本地办理。</div>
+                    <div class="rule-item">3、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            suspend: {
+                title: "手机停机保号",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：5元/月（如有承诺保底消费，则按照保底金额收取）</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、停机保号当月不收取保号费，按照客户订购的套餐费收取。（套餐费若按天扣费，停机后不再收取；若按月扣费，会扣取全月套餐费用）</div>
+                    <div class="rule-item">2、合约未到期客户不能办理停机保号。</div>
+                    <div class="rule-item">3、停机保号期间若欠费超过90天则停止提供服务，号码将被回收。</div>
+                    <div class="rule-item">4、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            resume: {
+                title: "手机停机保号恢复",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、停机保号复机当月会收取全月套餐费。</div>
+                    <div class="rule-item">2、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            lost: {
+                title: "手机挂失",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：套餐月费或承诺消费金额</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                `
+            },
+            change: {
+                title: "资费变更",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1.转出或取消已停售资费产品无法转回，无法再次办理。</div>
+                    <div class="rule-item">2、依附主资费办理的附件资费产品，变更主资费将同步退订附件资费。</div>
+                    <div class="rule-item">3、宽带产品办理若涉及家庭成员，需提供成员身份证或服务密码。</div>
+                    <div class="rule-item">4、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            invoice: {
+                title: "发票/账单/详单打印",
+                content: `
+                    <div class="rule-item">业务对象：淄博移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1.可以查询打印近六个月账单/详单。</div>
+                    <div class="rule-item">2、预存款发票仅能缴费当月打印。</div>
+                    <div class="rule-item">3、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            move: {
+                title: "家庭宽带移机",
+                content: `
+                    <div class="rule-item">业务对象：成都移动家庭宽带客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：移机费≤120元/次</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、移机需提供原宽带设备（光猫+机顶盒），若设备遗失需要自行购买设备才能完成移机。</div>
+                    <div class="rule-item">2、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            unsubscribe: {
+                title: "家庭宽带退订",
+                content: `
+                    <div class="rule-item">业务对象：成都移动家庭宽带客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件及家庭宽带设备（光猫+机顶盒）；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书，及家庭宽带设备（光猫+机顶盒</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书及家庭宽带设备（光猫+机顶盒）</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、办理退订时，移动公司需回收终端设备。</div>
+                    <div class="rule-item">2、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            replaceDevice: {
+                title: "家庭宽带更换设备",
+                content: `
+                    <div class="rule-item">业务对象：成都移动家庭宽带客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：光猫≤240/台，机顶盒≤240/台 有合约在网24个月</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件；若非机主本人，持机主身份证原件+代办人身份证原件+机主授权书</div>
+                    <div class="rule-item">单位办理手续：使用人持本人身份证原件+单位有效证件+单位委托书</div>
+                    <div class="rule-item">温馨提示：具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            smart: {
+                title: "家庭宽带智能组网",
+                content: `
+                    <div class="rule-item">业务对象：成都移动家庭宽带客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：参与营销活动按活动规则收费；未参加活动一次性调测费60元</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件</div>
+                    <div class="rule-item">温馨提示：具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            childLock: {
+                title: "机顶盒童锁设置",
+                content: `
+                    <div class="rule-item">业务对象：成都移动家庭宽带客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、机顶盒消费存在第三方支付（微信、支付宝）的形式，童锁功能仅限制机顶盒点播，无法限制第三方支付行为。</div>
+                    <div class="rule-item">2、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            crossCancel: {
+                title: "跨省销号",
+                content: `
+                    <div class="rule-item">业务对象：漫游至成都的外省移动客户</div>
+                    <div class="rule-item">办理渠道：移动营业厅</div>
+                    <div class="rule-item">收费标准：免费</div>
+                    <div class="rule-item">个人办理手续：机主本人持身份证原件及服务密码</div>
+                    <div class="rule-item">温馨提示：</div>
+                    <div class="rule-item">1、办理号码需状态正常且已实名登记认证，不提供代办服务。</div>
+                    <div class="rule-item">2、号码话费余额可转移至归属省移动号码中，无法退现。</div>
+                    <div class="rule-item">3、办理时需预留联系方式及需要转存余额的手机号码。</div>
+                    <div class="rule-item">4、客户可提供本人有效身份证件原件及通话记录验证后重置服务密码。</div>
+                    <div class="rule-item">5、具体以营业厅工作人员办理为准。</div>
+                `
+            },
+            // 其他业务信息数据...
+        };
+
+        document.getElementById('customerType').addEventListener('change', function() {
+            var personalInfo = document.getElementById('personalInfo');
+            var companyInfo = document.getElementById('companyInfo');
+            if (this.value === 'personal') {
+                personalInfo.style.display = 'block';
+                companyInfo.style.display = 'none';
+            } else if (this.value === 'company') {
+                companyInfo.style.display = 'block';
+                personalInfo.style.display = 'none';
+            } else {
+                personalInfo.style.display = 'none';
+                companyInfo.style.display = 'none';
+            }
+        });
+
+        document.getElementById('businessType').addEventListener('change', function() {
+            var businessInfo = document.getElementById('businessInfo');
+            var selectedValue = this.value;
+            
+            if (selectedValue && businessInfoData[selectedValue]) {
+                businessInfo.innerHTML = `<h2>${businessInfoData[selectedValue].title}</h2>
+                                        ${businessInfoData[selectedValue].content}`;
+                businessInfo.style.display = 'block';
+            } else {
+                businessInfo.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
